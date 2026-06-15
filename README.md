@@ -31,7 +31,8 @@ should always be true (like "write the least code that works"). Keep it short.
 `skills/` is the **on-demand** layer. Each skill's name and description load at
 session start, but its body only loads when the description matches what
 you're doing. That's for capabilities you want pulled in when relevant and
-otherwise out of the way — like resolving "this file" to a real path.
+otherwise out of the way — like resolving "this file" to a real path. The
+skills approach is partly inspired by Karpathy's coding skills.
 
 ## A scaffold for global behavior
 

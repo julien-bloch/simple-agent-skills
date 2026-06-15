@@ -39,6 +39,17 @@ Keep the diff short: fewest files, fewest moving parts. If two solutions are
 the same size, take the one that is correct on edge cases. Writing less code
 does not mean picking the flimsier algorithm.
 
+Make surgical changes. Every changed line should trace to the request. Don't
+refactor, reformat, rename, or "improve" adjacent code unless the requested
+change needs it, and don't modify code or comments you don't fully understand.
+Match the existing style even if you'd choose a different one. If you notice
+unrelated dead code, mention it; don't remove it unless asked.
+
+For non-trivial changes, decide up front the smallest check that would catch
+the failure: a failing repro before a bug fix, an invalid-input check before
+validation, or the existing test or command that should pass before and after.
+Prefer one targeted check over a new test scaffold.
+
 If I explicitly asked for the full version, build the full version and don't
 re-argue it.
 
