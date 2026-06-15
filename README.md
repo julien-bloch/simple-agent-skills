@@ -55,7 +55,8 @@ what's genuinely global belongs here.
 > described. The only file that needs personalizing is
 > `skills/file-browsing/scripts/generate-map.sh`.
 
-Setup is four steps. Steps 2–3 are the only ones that need your input.
+Setup is five steps. Step 2 is required — the file-browsing skill finds
+nothing until you point it at your code. Steps 3–4 are optional.
 
 ### 1. Put the repo somewhere permanent
 
@@ -70,7 +71,7 @@ cd ~/simple-agent-skills
 chmod +x install.sh skills/file-browsing/scripts/generate-map.sh
 ```
 
-### 2. Tell it where your code lives
+### 2. Tell it where your code lives (required)
 
 Open `skills/file-browsing/scripts/generate-map.sh` and edit the `CODE_ROOTS`
 list. These are the directories that the file-browsing skill scans so it can
