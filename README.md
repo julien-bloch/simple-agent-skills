@@ -28,6 +28,21 @@ session start, but its body only loads when the description matches what
 you're doing. That's for capabilities you want pulled in when relevant and
 otherwise out of the way — like resolving "this file" to a real path.
 
+## A scaffold for global behavior
+
+Think of this repo as the scaffold for agent behavior that should be **global**
+— shared by both Claude Code and Codex, across every repo, not pinned to one
+project. `AGENTS.md` holds the always-on rules; `skills/` holds the reusable,
+on-demand capabilities. It ships with one skill (`file-browsing`) as a worked
+example.
+
+It's the right home for cross-cutting skills you want available everywhere,
+added as you need them — for example a `code-review` skill or a
+`data-analysis` skill. Drop each one in as its own folder under `skills/`,
+rerun `./install.sh`, and it's live in both tools for all repos. Keep
+project-specific skills in that project's own `.claude/skills` instead; only
+what's genuinely global belongs here.
+
 ## Get started
 
 > **If an agent is setting this up for you:** don't guess the answers below.
