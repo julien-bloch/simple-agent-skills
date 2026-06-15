@@ -25,8 +25,8 @@ should always be true (like "write the least code that works"). Keep it short.
 
 > The agreements in `AGENTS.md` are a minimalism credo — write as little code
 > as possible, and as simple as possible. It's inspired by the **caveman** and
-> **ponytail** coding-agent prompts, distilled down into a single always-on
-> file instead of a separate tool.
+> **ponytail** coding-agent skills, distilled down into a single always-on
+> file instead of a separate plugin.
 
 `skills/` is the **on-demand** layer. Each skill's name and description load at
 session start, but its body only loads when the description matches what
