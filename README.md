@@ -24,15 +24,14 @@ tools and stays in context the whole time, so it's for dispositions that
 should always be true (like "write the least code that works"). Keep it short.
 
 > The agreements in `AGENTS.md` are a minimalism credo — write as little code
-> as possible, and as simple as possible. It's inspired by the **caveman** and
-> **ponytail** coding-agent skills, distilled down into a single always-on
-> file instead of a separate plugin.
+> as possible, and as simple as possible. It's inspired by the **caveman**,
+> **ponytail**, and **karpathy-coding-skills** skills, distilled down into a
+> single always-on file instead of a separate plugin.
 
 `skills/` is the **on-demand** layer. Each skill's name and description load at
 session start, but its body only loads when the description matches what
 you're doing. That's for capabilities you want pulled in when relevant and
-otherwise out of the way — like resolving "this file" to a real path. The
-skills approach is partly inspired by Karpathy's coding skills.
+otherwise out of the way — like resolving "this file" to a real path.
 
 ## A scaffold for global behavior
 
