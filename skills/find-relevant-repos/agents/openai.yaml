@@ -1,0 +1,4 @@
+interface:
+  display_name: "Find Relevant Repos"
+  short_description: "Resolve vague repo and codebase references"
+  default_prompt: "Use $find-relevant-repos to locate the repo or codebase I mean before editing or searching broadly."

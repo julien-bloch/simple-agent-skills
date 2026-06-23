@@ -11,10 +11,9 @@ simple-agent-skills/
 ├── AGENTS.md            # always-on rules, loaded every turn
 ├── install.sh           # symlinks everything into both tools
 └── skills/
-    └── file-browsing/   # on-demand skill, pulled only when relevant
-        ├── SKILL.md
-        └── scripts/
-            └── generate-map.sh
+    ├── find-relevant-repos/
+    ├── notes-and-lists/
+    └── pr-review-style/
 ```
 
 ## Two layers
@@ -31,15 +30,16 @@ should always be true (like "write the least code that works"). Keep it short.
 `skills/` is the **on-demand** layer. Each skill's name and description load at
 session start, but its body only loads when the description matches what
 you're doing. That's for capabilities you want pulled in when relevant and
-otherwise out of the way — like resolving "this file" to a real path.
+otherwise out of the way — like finding the right repo, reading notes, or
+using a specific PR review style.
 
 ## A scaffold for global behavior
 
 Think of this repo as the scaffold for agent behavior that should be **global**
 — shared by both Claude Code and Codex, across every repo, not pinned to one
 project. `AGENTS.md` holds the always-on rules; `skills/` holds the reusable,
-on-demand capabilities. It ships with one skill (`file-browsing`) as a worked
-example.
+on-demand capabilities. It ships with small skills for finding repos, working
+with notes/lists, and reviewing PRs in a high-signal style.
 
 It's the right home for cross-cutting skills you want available everywhere,
 added as you need them — for example a `code-review` skill or a
@@ -53,10 +53,12 @@ what's genuinely global belongs here.
 > **If an agent is setting this up for you:** don't guess the answers below.
 > Ask the human each question, then write their answers into the files as
 > described. The only file that needs personalizing is
-> `skills/file-browsing/scripts/generate-map.sh`.
+> `skills/find-relevant-repos/scripts/list-repos.sh`, plus
+> `skills/notes-and-lists/scripts/list-note-areas.sh` if they keep readable
+> notes on disk.
 
-Setup is five steps. Step 2 is required — the file-browsing skill finds
-nothing until you point it at your code. Steps 3–4 are optional.
+Setup is five steps. Step 2 is required — the repo skill finds nothing until
+you point it at your code. Steps 3–4 are optional.
 
 ### 1. Put the repo somewhere permanent
 
@@ -68,14 +70,15 @@ from the new location.
 ```bash
 git clone <your-fork-url> ~/simple-agent-skills
 cd ~/simple-agent-skills
-chmod +x install.sh skills/file-browsing/scripts/generate-map.sh
+chmod +x install.sh skills/find-relevant-repos/scripts/list-repos.sh
+chmod +x skills/notes-and-lists/scripts/list-note-areas.sh
 ```
 
 ### 2. Tell it where your code lives (required)
 
-Open `skills/file-browsing/scripts/generate-map.sh` and edit the `CODE_ROOTS`
-list. These are the directories that the file-browsing skill scans so it can
-resolve "my X project" to a real path. Answer these questions:
+Open `skills/find-relevant-repos/scripts/list-repos.sh` and edit the
+`CODE_ROOTS` list. These are the directories that the repo skill scans so it
+can resolve "my X project" to a real path. Answer these questions:
 
 - **Which top-level folders hold your repositories?** (e.g. `~/dev`,
   `~/work`, `~/code`.) List each one.
@@ -94,9 +97,10 @@ CODE_ROOTS=(
 
 ### 3. Tell it where your notes live (optional)
 
-Still in `generate-map.sh`, edit `NOTES_DIRS`. These are directories whose
-**top-level folders** are treated as note areas (e.g. an Obsidian vault).
-Leave it empty if you don't keep notes this way. Answer:
+Open `skills/notes-and-lists/scripts/list-note-areas.sh` and edit
+`NOTE_ROOTS`. These are directories whose **top-level folders** are treated as
+note areas (e.g. an Obsidian vault). Leave it empty if you don't keep notes
+this way. Answer:
 
 - **Do you keep markdown notes in one root?** If yes, give its path. For
   Obsidian on macOS that's usually
@@ -106,16 +110,17 @@ Leave it empty if you don't keep notes this way. Answer:
   list those — there's no readable path. Reach them via the app's API instead.
 
 ```bash
-NOTES_DIRS=(
+NOTE_ROOTS=(
   "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 )
 ```
 
-Sanity-check your edits by running the script — it should print your repos and
-note areas:
+Sanity-check your edits by running the scripts — they should print your repos
+and note areas:
 
 ```bash
-bash skills/file-browsing/scripts/generate-map.sh
+bash skills/find-relevant-repos/scripts/list-repos.sh
+bash skills/notes-and-lists/scripts/list-note-areas.sh
 ```
 
 ### 4. (Optional) Make the rules yours
@@ -167,6 +172,6 @@ over-use them.
 ## Maintenance
 
 Treat this like code. Prune skills that go stale, because a skill with wrong
-instructions is worse than no skill. The file-browsing skill avoids this by
-regenerating its map from the live filesystem on every run instead of
-hardcoding paths.
+instructions is worse than no skill. The repo and notes skills avoid this by
+regenerating maps from the live filesystem on every run instead of hardcoding
+specific repo or note paths.
