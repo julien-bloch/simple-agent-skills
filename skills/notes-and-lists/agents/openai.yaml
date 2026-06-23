@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notes and Lists"
+  short_description: "Resolve personal notes, todos, and lists"
+  default_prompt: "Use $notes-and-lists to find or work with my notes, todos, or lists."

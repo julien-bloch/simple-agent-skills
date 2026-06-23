@@ -6,6 +6,9 @@ and is hard to misunderstand later.
 If the request is ambiguous in a way that changes the implementation, ask one
 short question rather than silently building the smallest interpretation.
 
+When I refer vaguely to a repo, project, note, list, or local context, resolve
+the intended source before searching broadly or asking where it is.
+
 Before writing code, walk this order and stop at the first step that holds.
 
 1. Does this need to exist at all? If the need is speculative, skip it and
@@ -49,6 +52,9 @@ For non-trivial changes, decide up front the smallest check that would catch
 the failure: a failing repro before a bug fix, an invalid-input check before
 validation, or the existing test or command that should pass before and after.
 Prefer one targeted check over a new test scaffold.
+
+For code and PR reviews, optimize for high-signal correctness findings; use
+the `pr-review-style` skill for the detailed review bar and comment style.
 
 If I explicitly asked for the full version, build the full version and don't
 re-argue it.

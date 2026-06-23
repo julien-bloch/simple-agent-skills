@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Review Style"
+  short_description: "High-signal PR review guidance"
+  default_prompt: "Use $pr-review-style to review this PR for high-signal, actionable correctness risks."
