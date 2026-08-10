@@ -5,6 +5,12 @@ description: High-signal PR and code review guidance for actionable correctness-
 
 # PR Review Style
 
+## Gathering Context
+
+Pull the full context before reviewing, not just the diff: the PR description,
+the commit history, and the comments. Comments include both the top-level
+discussion and the inline review threads, which are a separate feed.
+
 ## Review Bar
 
 Optimize for high-signal comments only. Prefer fewer comments that are clearly

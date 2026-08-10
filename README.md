@@ -157,7 +157,11 @@ ls -l ~/.claude/skills/ ~/.codex/skills/
 The install is symlinks, not copies, so **editing a file here changes what
 both tools read** — no reinstall needed. Rerun `./install.sh` only when the
 *set* of links changes: you add or rename a skill, or you move the repo.
-(A session that's already running may need a restart to pick up an edit.)
+
+A running session doesn't need restarting for skills: an edited `SKILL.md` is
+read the next time that skill fires, and a newly linked skill shows up within
+about a minute. `AGENTS.md` is the exception — it's read once at session start,
+so an edit to it needs a restart.
 
 ## Adding a skill
 

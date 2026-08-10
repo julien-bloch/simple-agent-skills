@@ -72,6 +72,6 @@ if [ "$HERMES" -eq 1 ]; then
 fi
 
 echo
-echo "Done. Restart any running Claude Code or Codex session so it picks up"
-echo "newly created directories. If Claude Code doesn't hot-reload edits to a"
-echo "symlinked skill, point ~/.claude/skills at the repo directly or copy."
+echo "Done. Claude Code picks up newly linked skills within about a minute,"
+echo "no restart needed; Codex reads them on its next run. Edits to files"
+echo "that are already linked are read live and need no reinstall."
