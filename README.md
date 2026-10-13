@@ -13,7 +13,8 @@ simple-agent-skills/
 └── skills/
     ├── find-relevant-repos/
     ├── notes-and-lists/
-    └── pr-review-style/
+    ├── pr-review-style/
+    └── skills-management/
 ```
 
 ## Two layers
@@ -39,7 +40,8 @@ Think of this repo as the scaffold for agent behavior that should be **global**
 — shared by both Claude Code and Codex, across every repo, not pinned to one
 project. `AGENTS.md` holds the always-on rules; `skills/` holds the reusable,
 on-demand capabilities. It ships with small skills for finding repos, working
-with notes/lists, and reviewing PRs in a high-signal style.
+with notes/lists, reviewing PRs in a high-signal style, and suggesting skill
+updates learned in a conversation.
 
 It's the right home for cross-cutting skills you want available everywhere,
 added as you need them — for example a `code-review` skill or a
