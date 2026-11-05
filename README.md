@@ -17,6 +17,7 @@ simple-agent-skills/
     ├── frontend-workflow/
     ├── landing-page-design/
     ├── notes-and-lists/
+    ├── paseo-workflow/
     ├── pr-review-style/
     ├── skills-management/
     └── ux-review/
@@ -58,10 +59,28 @@ updates learned in a conversation.
 | `clarity` | Draft, rewrite or review prose so it reads like you, not like AI |
 | `frontend-workflow` | Build a web UI and check it in a real browser |
 | `ux-review` | Critique and test an existing UI |
+| `paseo-workflow` | Optional, for Paseo users: open a PR review or branch as its own workspace |
 | `landing-page-design` | Distinctive landing and marketing pages |
 
-The browser checks in `frontend-workflow` and `ux-review` use Paseo's browser
-tools when they're available and say what to fall back to otherwise.
+### I work in Paseo
+
+I run my agents in [Paseo](https://paseo.sh), an app that runs Claude Code and
+Codex agents side by side, each in its own workspace with its chat, terminals
+and diffs. These skills don't require it, but some of them were written around
+it, so if you want to copy how I work, it's worth installing:
+
+- `frontend-workflow` and `ux-review` check UIs with Paseo's built-in browser
+  tools, and fall back to whatever browser tool your agent has.
+- `paseo-workflow` (optional) is how I open a PR review or a branch as its own
+  workspace, each in a separate git worktree with its own agent chat. Skip it
+  if you don't use Paseo.
+- I also use Paseo's own [orchestration skills](https://paseo.sh/docs/skills.md):
+  `paseo` (the reference for launching and managing agents and workspaces),
+  `paseo-handoff`, `paseo-advisor` (a second opinion) and `paseo-committee`
+  (two independent analyses of a hard problem). They aren't in this repo and
+  aren't installed by default: pick them in Paseo under **Settings → your host →
+  Agents → Orchestration skills**, or run `npx skills add getpaseo/paseo`.
+  `paseo-workflow` builds on the `paseo` skill.
 
 ### Design mockups
 
