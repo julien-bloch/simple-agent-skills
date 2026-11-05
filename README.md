@@ -136,8 +136,7 @@ Some skills build on others' work, under their licenses:
   adds a step to confirm the page's main idea first.
 - `frontend-workflow`'s `tells.md` is adapted from
   [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) (MIT), and its
-  `app-screens.md` is distilled from taste-skill and
-  [pbakaus/impeccable](https://github.com/pbakaus/impeccable) (Apache 2.0).
+  `app-screens.md` is distilled from the same skill.
 - `ux-review`, plus `frontend-workflow`'s `interaction.md` and its state and
   accessibility checks, are synthesized from *Don't Make Me Think*, *Refactoring
   UI*, *Designing Interfaces* and *Just Enough Research*.

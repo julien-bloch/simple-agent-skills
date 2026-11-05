@@ -6,8 +6,7 @@ should find their way around first and register the style only later. An existin
 everything below.
 
 Distilled from [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)@12af471
-(`references/app-screens.md`) and [pbakaus/impeccable](https://github.com/pbakaus/impeccable)@7510e23
-(`reference/mode-operate.md`).
+(`references/app-screens.md`).
 
 ## What the screen is for
 
