@@ -4,6 +4,8 @@ One place to own how your coding agents behave. This repo is the source of
 truth; Claude Code and Codex (and optionally Hermes) are just readers of it,
 wired up with symlinks. Edit a file here and both tools see the change.
 
+It's a trimmed public copy of the setup I use, so fork it and make it yours.
+
 ## Layout
 
 ```
@@ -46,9 +48,16 @@ using a specific PR review style.
 Think of this repo as the scaffold for agent behavior that should be **global**
 — shared by both Claude Code and Codex, across every repo, not pinned to one
 project. `AGENTS.md` holds the always-on rules; `skills/` holds the reusable,
-on-demand capabilities. It ships with small skills for finding repos, working
-with notes/lists, reviewing PRs in a high-signal style, and suggesting skill
-updates learned in a conversation.
+on-demand capabilities.
+
+It's the right home for cross-cutting skills you want available everywhere,
+added as you need them — for example a `code-review` skill or a
+`data-analysis` skill. Drop each one in as its own folder under `skills/`,
+rerun `./install.sh`, and it's live in both tools for all repos. Keep
+project-specific skills in that project's own `.claude/skills` instead; only
+what's genuinely global belongs here.
+
+## Skills
 
 | Skill | What it's for |
 | --- | --- |
@@ -60,8 +69,8 @@ updates learned in a conversation.
 | `clarity` | Draft, rewrite or review prose so it reads like you, not like AI |
 | `frontend-workflow` | Build a web UI and check it in a real browser |
 | `ux-review` | Critique and test an existing UI |
-| `paseo-workflow` | Optional, for Paseo users: open a PR review or branch as its own workspace |
 | `landing-page-design` | Distinctive landing and marketing pages |
+| `paseo-workflow` | Optional, for Paseo users: open a PR review or branch as its own workspace |
 
 ### I work in Paseo
 
@@ -73,8 +82,9 @@ it, so if you want to copy how I work, it's worth installing:
 - `frontend-workflow` and `ux-review` check UIs with Paseo's built-in browser
   tools, and fall back to whatever browser tool your agent has.
 - `paseo-workflow` (optional) is how I open a PR review or a branch as its own
-  workspace, each in a separate git worktree with its own agent chat. Skip it
-  if you don't use Paseo.
+  workspace, each in a separate git worktree with its own agent chat. If you
+  don't use Paseo, delete `skills/paseo-workflow/` before running
+  `./install.sh`, which links every folder under `skills/`.
 - I also use Paseo's own [orchestration skills](https://paseo.sh/docs/skills.md):
   `paseo` (the reference for launching and managing agents and workspaces),
   `paseo-handoff`, `paseo-advisor` (a second opinion) and `paseo-committee`
@@ -112,8 +122,9 @@ For icons or artwork that hand-drawn SVG can't carry, generate images with the
 Codex CLI, for example `codex exec -C designs/<project> "<what to draw>. Save it
 as <name>.png in this folder."`
 
-Some skills build on others' work, under their licenses (kept next to the
-files):
+### Credits
+
+Some skills build on others' work, under their licenses:
 
 - `clarity` is [addyosmani/clarity](https://github.com/addyosmani/clarity)
   (MIT), lightly edited; its AI-patterns catalog is adapted from
@@ -123,13 +134,13 @@ files):
   narrowed to landing pages: its bold, distinctive styling suits pages that
   sell, not everyday app screens, which `frontend-workflow` covers. It also
   adds a step to confirm the page's main idea first.
-
-It's the right home for cross-cutting skills you want available everywhere,
-added as you need them — for example a `code-review` skill or a
-`data-analysis` skill. Drop each one in as its own folder under `skills/`,
-rerun `./install.sh`, and it's live in both tools for all repos. Keep
-project-specific skills in that project's own `.claude/skills` instead; only
-what's genuinely global belongs here.
+- `frontend-workflow`'s `tells.md` is adapted from
+  [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) (MIT), and its
+  `app-screens.md` is distilled from taste-skill and
+  [pbakaus/impeccable](https://github.com/pbakaus/impeccable) (Apache 2.0).
+- `ux-review`, plus `frontend-workflow`'s `interaction.md` and its state and
+  accessibility checks, are synthesized from *Don't Make Me Think*, *Refactoring
+  UI*, *Designing Interfaces* and *Just Enough Research*.
 
 ## Get started
 
@@ -153,8 +164,6 @@ from the new location.
 ```bash
 git clone <your-fork-url> ~/simple-agent-skills
 cd ~/simple-agent-skills
-chmod +x install.sh skills/find-relevant-repos/scripts/list-repos.sh
-chmod +x skills/notes-and-lists/scripts/list-note-areas.sh
 ```
 
 ### 2. Tell it where your code lives (required)
@@ -211,6 +220,7 @@ bash skills/notes-and-lists/scripts/list-note-areas.sh
 `AGENTS.md` ships with a set of working agreements. Read it and adjust to your
 taste — it loads on every turn, so it's the strongest lever you have. It's
 written in the first person, so "I" is you, the person the agents work for.
+Delete its Paseo section if you don't use Paseo.
 
 ### 5. Wire it into your tools
 
@@ -226,10 +236,10 @@ This symlinks:
 - each skill folder → `~/.claude/skills/` and `~/.codex/skills/`
 
 With `--hermes` it also links skills into `~/.agents/skills/` (shared with
-Codex) and appends a one-line pointer to `~/.hermes/SOUL.md`.
+Codex) and appends a short pointer to `~/.hermes/SOUL.md`.
 
 Existing real files at those paths are backed up before linking, and re-running
-is safe. Then verify and restart any open session so it picks up the links:
+is safe. Then verify, and restart any open session so it reads `AGENTS.md`:
 
 ```bash
 ls -l ~/.codex/AGENTS.md ~/.claude/CLAUDE.md
