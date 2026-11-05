@@ -32,10 +32,12 @@ tools and stays in context the whole time, so it's for dispositions that
 should always be true (like "write the least code that works"). Keep it short.
 
 > The coding rules in `AGENTS.md` are a minimalism credo — write as little
-> code as possible, and as simple as possible. They're inspired by the
-> **caveman**, **ponytail**, and **karpathy-coding-skills** skills, distilled
-> down into a single always-on file instead of a separate plugin. Around them
-> are a few rules on decisions and answers, and an optional Paseo section.
+> code as possible, and as simple as possible. They're adapted from the
+> [ponytail](https://github.com/DietrichGebert/ponytail) and
+> [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
+> skills, distilled down into a single always-on file instead of a separate
+> plugin. Around them are a few rules on decisions and answers, and an optional
+> Paseo section.
 
 `skills/` is the **on-demand** layer. Each skill's name and description load at
 session start, but its body only loads when the description matches what
