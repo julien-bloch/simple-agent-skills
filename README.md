@@ -11,10 +11,15 @@ simple-agent-skills/
 ├── AGENTS.md            # always-on rules, loaded every turn
 ├── install.sh           # symlinks everything into both tools
 └── skills/
+    ├── clarity/
+    ├── experiment-hygiene/
     ├── find-relevant-repos/
+    ├── frontend-workflow/
+    ├── landing-page-design/
     ├── notes-and-lists/
     ├── pr-review-style/
-    └── skills-management/
+    ├── skills-management/
+    └── ux-review/
 ```
 
 ## Two layers
@@ -42,6 +47,59 @@ project. `AGENTS.md` holds the always-on rules; `skills/` holds the reusable,
 on-demand capabilities. It ships with small skills for finding repos, working
 with notes/lists, reviewing PRs in a high-signal style, and suggesting skill
 updates learned in a conversation.
+
+| Skill | What it's for |
+| --- | --- |
+| `find-relevant-repos` | Resolve "that repo" or "my X project" to a real path |
+| `notes-and-lists` | Find notes and lists by topic before searching broadly |
+| `pr-review-style` | High-signal, correctness-first code review |
+| `skills-management` | Suggest skill updates learned in a conversation |
+| `experiment-hygiene` | Honest ML and data experiments: folds, scoring, confounds |
+| `clarity` | Draft, rewrite or review prose so it reads like you, not like AI |
+| `frontend-workflow` | Build a web UI and check it in a real browser |
+| `ux-review` | Critique and test an existing UI |
+| `landing-page-design` | Distinctive landing and marketing pages |
+
+The browser checks in `frontend-workflow` and `ux-review` use Paseo's browser
+tools when they're available and say what to fall back to otherwise.
+
+### Design mockups
+
+For UI mockups, prototypes and icons I don't ship a skill here. Get the
+`claude-design` skill from [jimliu/baoyu-design](https://github.com/jimliu/baoyu-design),
+which puts design options side by side on a canvas (check its `NOTICE.md` for
+which parts are under which terms). The loop I run with it:
+
+1. **Ask before drawing.** What it builds on (an existing app, a design system,
+   screenshots, a brand), wireframe or polished, which screens, and how many
+   options and what they should vary.
+2. **Make several options at once,** side by side on one canvas, each labeled
+   so you can name the one you mean.
+3. **Check them in a browser.** Serve the folder over local HTTP rather than
+   opening files directly, look at the sizes that matter, and fix console
+   errors before showing anything.
+4. **Show them the way you'll judge them:** screenshots in chat for quick
+   picks, the canvas in a browser for a real comparison. To look from your
+   phone or another machine, open a Cloudflare quick tunnel,
+   `cloudflared tunnel --no-autoupdate --url http://localhost:PORT`, and send
+   the `trycloudflare.com` link. Anyone with the link can see the folder, so
+   stop the tunnel when you're done.
+5. **Refine until one is picked.** Copy the file before a big revision, take
+   feedback, and narrow down. Then build the winner into the app with
+   `frontend-workflow`.
+
+For icons or artwork that hand-drawn SVG can't carry, generate images with the
+Codex CLI, for example `codex exec -C designs/<project> "<what to draw>. Save it
+as <name>.png in this folder."`
+
+Some skills build on others' work, under their licenses (kept next to the
+files):
+
+- `clarity` is [addyosmani/clarity](https://github.com/addyosmani/clarity)
+  (MIT), lightly edited; its AI-patterns catalog is adapted from
+  [blader/humanizer](https://github.com/blader/humanizer) (MIT).
+- `landing-page-design` is modified from Anthropic's `frontend-design` skill in
+  [anthropics/skills](https://github.com/anthropics/skills) (Apache 2.0).
 
 It's the right home for cross-cutting skills you want available everywhere,
 added as you need them — for example a `code-review` skill or a

@@ -59,6 +59,11 @@ the `pr-review-style` skill for the detailed review bar and comment style.
 If I explicitly asked for the full version, build the full version and don't
 re-argue it.
 
+A short question about your recommendation, or another model's opinion I
+paste in, is not a decision. Answer it and keep your position unless the
+reasoning changes. An interruption that only asks a question is not a stop
+either: answer it, then resume the work I already approved.
+
 When you take a deliberate shortcut, leave a short comment that names the
 ceiling and the upgrade path, so it reads as intent rather than an oversight.
 Example: `# shortcut: O(n^2) scan, fine under ~1k rows, index if it grows`.
