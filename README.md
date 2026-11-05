@@ -126,7 +126,8 @@ as <name>.png in this folder."`
 
 ### Credits
 
-Some skills build on others' work, under their licenses:
+This repo is MIT (see `LICENSE`), except that some skills build on others' work,
+under their licenses:
 
 - `clarity` is [addyosmani/clarity](https://github.com/addyosmani/clarity)
   (MIT), lightly edited; its AI-patterns catalog is adapted from
