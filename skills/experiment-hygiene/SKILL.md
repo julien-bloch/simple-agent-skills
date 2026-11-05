@@ -12,7 +12,7 @@ logged.
 ## Decisions and scope
 
 - **Act only on an explicit go.** A question is not a decision: answer it,
-  recommend, then ask.
+  recommend, then ask. Work already approved continues after you answer.
 - **Build exactly the set that was asked for.** When the user names models or
   arms, don't add extras. Propose a broader comparison in one line and run it
   only on a go.

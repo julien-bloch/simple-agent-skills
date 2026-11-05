@@ -29,10 +29,11 @@ simple-agent-skills/
 tools and stays in context the whole time, so it's for dispositions that
 should always be true (like "write the least code that works"). Keep it short.
 
-> The agreements in `AGENTS.md` are a minimalism credo — write as little code
-> as possible, and as simple as possible. It's inspired by the **caveman**,
-> **ponytail**, and **karpathy-coding-skills** skills, distilled down into a
-> single always-on file instead of a separate plugin.
+> The coding rules in `AGENTS.md` are a minimalism credo — write as little
+> code as possible, and as simple as possible. They're inspired by the
+> **caveman**, **ponytail**, and **karpathy-coding-skills** skills, distilled
+> down into a single always-on file instead of a separate plugin. Around them
+> are a few rules on decisions and answers, and an optional Paseo section.
 
 `skills/` is the **on-demand** layer. Each skill's name and description load at
 session start, but its body only loads when the description matches what
@@ -208,7 +209,8 @@ bash skills/notes-and-lists/scripts/list-note-areas.sh
 ### 4. (Optional) Make the rules yours
 
 `AGENTS.md` ships with a set of working agreements. Read it and adjust to your
-taste — it loads on every turn, so it's the strongest lever you have.
+taste — it loads on every turn, so it's the strongest lever you have. It's
+written in the first person, so "I" is you, the person the agents work for.
 
 ### 5. Wire it into your tools
 

@@ -1,13 +1,27 @@
-# Working agreements
-
-Make the smallest change that satisfies the actual request, fits the repo,
-and is hard to misunderstand later.
+# Decisions and answers
 
 If the request is ambiguous in a way that changes the implementation, ask one
 short question rather than silently building the smallest interpretation.
 
 When I refer vaguely to a repo, project, note, list, or local context, resolve
 the intended source before searching broadly or asking where it is.
+
+A short question about your recommendation, or another model's opinion I
+paste in, is not a decision. Answer it and keep your position unless the
+reasoning changes. An interruption that only asks a question is not a stop
+either: answer it, then resume the work I already approved.
+
+If I explicitly asked for the full version, build the full version and don't
+re-argue it.
+
+Lead with the result: the code, the finding, or the answer. After it, only
+flag skipped work if the skip is load-bearing. Keep the explanation short:
+only what I need to judge the result.
+
+# Making changes
+
+Make the smallest change that satisfies the actual request, fits the repo,
+and is hard to misunderstand later.
 
 Before writing code, walk this order and stop at the first step that holds.
 
@@ -53,21 +67,30 @@ the failure: a failing repro before a bug fix, an invalid-input check before
 validation, or the existing test or command that should pass before and after.
 Prefer one targeted check over a new test scaffold.
 
-For code and PR reviews, optimize for high-signal correctness findings; use
-the `pr-review-style` skill for the detailed review bar and comment style.
-
-If I explicitly asked for the full version, build the full version and don't
-re-argue it.
-
-A short question about your recommendation, or another model's opinion I
-paste in, is not a decision. Answer it and keep your position unless the
-reasoning changes. An interruption that only asks a question is not a stop
-either: answer it, then resume the work I already approved.
-
 When you take a deliberate shortcut, leave a short comment that names the
 ceiling and the upgrade path, so it reads as intent rather than an oversight.
 Example: `# shortcut: O(n^2) scan, fine under ~1k rows, index if it grows`.
 
-Lead with the code. After it, only flag skipped work if the skip is
-load-bearing. If the explanation runs longer than the code, cut the
-explanation.
+# Paseo (optional)
+
+If you run your agents in Paseo, these keep its interface working for you;
+otherwise delete this section.
+
+When a decision belongs to me, ask it with your structured-question tool
+(AskUserQuestion in Claude Code) so it appears in Paseo. Put everything I need
+to decide inside the question itself: the question text, option descriptions,
+or preview. In Paseo, text you write before the question in the same turn may
+not reach me.
+
+Write a local server address as an explicit Markdown link with the port inside
+it, like `[http://127.0.0.1:8765/](http://127.0.0.1:8765/)`. Paseo auto-links a
+bare URL only up to the host, so the link drops the `:port` and opens nothing.
+
+When I ask to open a local app on my phone or another device, use a Cloudflare
+quick tunnel: `cloudflared tunnel --no-autoupdate --url http://localhost:PORT`,
+run in the background with a two-hour timeout. First confirm the right app
+answers on that port, not just any 200. An app that accepts only local requests
+(a loopback Host check) needs `--http-host-header localhost:PORT`. Check the
+`trycloudflare.com` address serves the app before sending it, say plainly that
+anyone with the link can use the app, and stop the tunnel, and any server
+started for it, when I'm done.
