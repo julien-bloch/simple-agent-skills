@@ -1,6 +1,6 @@
 ---
 name: clarity
-description: "Draft, rewrite, or review reader-facing prose so it is specific, useful, and recognizably the author's without inventing facts or performing humanness. Use for essays, articles, newsletters, documentation, talks, launch copy, and other important prose that feels generic, hollow, or AI-shaped, or that shows AI tells such as not-X-but-Y contrasts, one-line closers, forced triads, dashes everywhere, stock AI words, or bold labels. Supports co-write, rewrite, review, and lint modes."
+description: "Draft, rewrite, or review reader-facing prose so it is specific, useful, and recognizably the author's without inventing facts or performing humanness. Use whenever writing or revising prose that people will read under the author's name, such as social and LinkedIn posts, READMEs, announcements, launch copy, essays, articles, newsletters, documentation, talks and important emails, and for any prose that feels generic, hollow, or AI-shaped or shows AI tells such as not-X-but-Y contrasts, one-line closers, forced triads, dashes everywhere, stock AI words, or bold labels. Supports co-write, rewrite, review, and lint modes."
 license: MIT
 metadata:
   version: "0.2.1"
@@ -72,6 +72,8 @@ These apply in every mode.
 6. **Make the least invasive change that solves the request.** A polish does not authorize a new
    argument. A shortening does not authorize removing conditions. A review does not authorize a
    rewrite.
+7. **Write out contractions in published prose.** Use `it is`, not `it's`, unless the author's
+   writing sample uses contractions or the author asks otherwise.
 
 ## Establish the job of the piece
 
@@ -83,6 +85,9 @@ Outcome      What should they understand, feel, decide, or do afterward?
 Register     What kind of writing is this?
 Source       Which facts, examples, experiences, or judgments make it this author's?
 ```
+
+State the reader, the outcome and the core point in chat before drafting. In an argument, the
+first line states the core point in a form someone could disagree with.
 
 Use the register to decide what the piece owes:
 
