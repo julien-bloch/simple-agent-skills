@@ -98,8 +98,11 @@ files):
 - `clarity` is [addyosmani/clarity](https://github.com/addyosmani/clarity)
   (MIT), lightly edited; its AI-patterns catalog is adapted from
   [blader/humanizer](https://github.com/blader/humanizer) (MIT).
-- `landing-page-design` is modified from Anthropic's `frontend-design` skill in
-  [anthropics/skills](https://github.com/anthropics/skills) (Apache 2.0).
+- `landing-page-design` is Anthropic's `frontend-design` skill from
+  [anthropics/skills](https://github.com/anthropics/skills) (Apache 2.0),
+  narrowed to landing pages: its bold, distinctive styling suits pages that
+  sell, not everyday app screens, which `frontend-workflow` covers. It also
+  adds a step to confirm the page's main idea first.
 
 It's the right home for cross-cutting skills you want available everywhere,
 added as you need them — for example a `code-review` skill or a

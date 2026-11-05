@@ -7,8 +7,10 @@ license: Complete terms in LICENSE.txt
 # Landing Page Design
 
 Modified from Anthropic's `frontend-design` skill (`anthropics/skills@dbd4588`,
-Apache 2.0, terms in `LICENSE.txt`): renamed, scoped to landing pages, and
-edited.
+Apache 2.0, terms in `LICENSE.txt`). Theirs covers any new UI and pushes bold,
+distinctive styling. That suits pages that sell, but not everyday app screens,
+so this version is narrowed to landing pages. It also adds one step: confirm
+the page's main idea before designing. The rest is Anthropic's text.
 
 This skill is for pages that sell, explain, or present: landing pages,
 marketing sites, portfolios, launch pages. App screens are judged by
